@@ -1,19 +1,20 @@
-const { collection } = require('./mongo_db');
-const {sql} = require('./supa_db');
-(async () => {
+import { collection, client } from './mongo_db.js'
+import sql from './supa_db.js'
+
+;(async () => {
   try {
-    // Query to select all rows from your collection, e.g. 'users'
-    const mongoData = await collection.find({}).toArray();
-    console.log('MongoDB Data:', mongoData);
+    const mongoData = await collection.find({}).toArray()
+    console.log('MongoDB Data:', mongoData)
   } catch (error) {
-    console.error('Error reading data:', error)
+    console.error('MongoDB Error:', error)
   }
+
   try {
-    // Query to select all rows from your table, e.g. 'users'
     const users = await sql`SELECT * FROM users;`
-    console.log('Users:', users)
+    console.log('Supabase Users:', users)
   } catch (error) {
-    console.error('Error reading data:', error)
+    console.error('Supabase Error:', error)
+  } finally {
+    await client.close()
   }
-  await client.close();
-})();
+})()
