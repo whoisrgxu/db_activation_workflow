@@ -12,7 +12,7 @@ const sql  = require('./supa_db');
 
   try {
     const users = await sql`SELECT * FROM users;`
-    console.log('Supabase Users:', users)
+    console.log('Supabase Users:', holdings)
   } catch (error) {
     console.error('Supabase Error:', error)
   } finally {
