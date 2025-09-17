@@ -18,7 +18,7 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm install mongodb @supabase/supabase-js
+        run: npm install mongodb postgres
 
       - name: Run database read script
         env:
