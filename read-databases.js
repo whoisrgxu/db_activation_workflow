@@ -1,7 +1,7 @@
 const { collection, client }  = require('./mongo_db.js');
 const sql  = require('./supa_db.js');
 
-;(async () => {
+(async () => {
   try {
     const mongoData = await collection.find({}).toArray()
     console.log('MongoDB Data:', mongoData)
