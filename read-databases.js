@@ -1,5 +1,5 @@
-import { collection, client } from './mongo_db.js'
-import sql from './supa_db.js'
+const { collection, client }  = require('./mongo_db.js');
+const sql  = require('./supa_db.js');
 
 ;(async () => {
   try {
