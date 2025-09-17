@@ -1,6 +1,7 @@
 name: Scheduled MongoDB and Supabase Read
 
 on:
+  workflow_dispatch:   # Allows manual trigger from GitHub UI
   schedule:
     - cron: '0 3 * * *'  # Runs daily at 03:00 UTC
   workflow_dispatch:
