@@ -1,5 +1,4 @@
 const { MongoClient } = require('mongodb');
-const { createClient } = require('@supabase/supabase-js');
 
 (async () => {
   // Connect to MongoDB
@@ -10,7 +9,7 @@ const { createClient } = require('@supabase/supabase-js');
   console.log('MongoDB Data:', mongoData);
 
   // Connect to Supabase
-  const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
+  const supabase = createClient(process.env.SUPABASE_CONNECTION_URL);
   let { data: supaData, error } = await supabase.from('your_table').select('*');
   if (error) throw error;
   console.log('Supabase Data:', supaData);
