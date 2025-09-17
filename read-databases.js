@@ -1,8 +1,9 @@
-const { collection, client }  = require('./mongo_db.js');
+const { connectMongo, client }  = require('./mongo_db.js');
 const sql  = require('./supa_db.js');
 
 (async () => {
   try {
+    const collection = await connectMongo()
     const mongoData = await collection.find({}).toArray()
     console.log('MongoDB Data:', mongoData)
   } catch (error) {
