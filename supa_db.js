@@ -1,5 +1,14 @@
 const postgres = require('postgres');
-console.log('Supabase Connection String:', process.env.SUPABASE_CONNECTION_URL ? 'Set' : 'Not Set')
-const connectionString = process.env.SUPABASE_CONNECTION_URL
-const sql = postgres(connectionString)
-module.exports = sql;
+
+const connectionString = process.env.SUPABASE_CONNECTION_URL;
+
+// Initialize the client
+const sql = postgres(connectionString);
+
+// Export a simple wrapper
+module.exports = {
+  query: (strings, ...params) => sql(strings, ...params),
+  close: async (timeout = 5) => {
+    await sql.end({ timeout });
+  },
+};
