@@ -11,8 +11,8 @@ const supa = require('./supa_db');
   }
 
   try {
-    const holdings = await supa.query`SELECT * FROM holdings;`;
-    console.log('Supabase Users:', holdings);
+    const users = await supa.query`SELECT * FROM users;`;
+    console.log('Supabase User:', users);
   } catch (error) {
     console.error('Supabase Error:', error);
   } finally {
