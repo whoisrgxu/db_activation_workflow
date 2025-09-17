@@ -1,5 +1,5 @@
-const { connectMongo, client }  = require('./mongo_db.js');
-const sql  = require('./supa_db.js');
+const { connectMongo, client }  = require('./mongo_db');
+const sql  = require('./supa_db');
 
 (async () => {
   try {
