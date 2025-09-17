@@ -1,18 +1,20 @@
 const { MongoClient } = require('mongodb');
-
+const {sql} = require('./supa_db');
 (async () => {
   // Connect to MongoDB
   const client = new MongoClient(process.env.MONGO_URI);
   await client.connect();
-  const collection = client.db('your_db').collection('your_collection');
+  const collection = client.db('smart-cover-letter').collection('users');
   const mongoData = await collection.find({}).toArray();
   console.log('MongoDB Data:', mongoData);
 
   // Connect to Supabase
-  const supabase = createClient(process.env.SUPABASE_CONNECTION_URL);
-  let { data: supaData, error } = await supabase.from('your_table').select('*');
-  if (error) throw error;
-  console.log('Supabase Data:', supaData);
-
+  try {
+    // Query to select all rows from your table, e.g. 'users'
+    const users = await sql`SELECT * FROM users;`
+    console.log('Users:', users)
+  } catch (error) {
+    console.error('Error reading data:', error)
+  }
   await client.close();
 })();
