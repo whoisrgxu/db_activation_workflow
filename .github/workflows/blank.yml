@@ -23,6 +23,5 @@ jobs:
       - name: Run database read script
         env:
           MONGO_URI: ${{ secrets.MONGO_URI }}
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          SUPABASE_CONNECTION_URL: ${{ secrets.SUPABASE_CONNECTION_URL }}
         run: node read-databases.js
