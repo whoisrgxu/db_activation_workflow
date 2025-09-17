@@ -25,4 +25,4 @@ jobs:
           MONGO_URI: ${{ secrets.MONGO_URI }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
-        run: node scripts/read-databases.js
+        run: node read-databases.js
