@@ -1,7 +1,9 @@
 const { MongoClient } = require('mongodb');
 
 const client = new MongoClient(process.env.MONGO_URI)
-await client.connect()
-const collection = client.db('smart-cover-letter').collection('users')
+async function connectMongo() {
+  await client.connect()
+  return client.db('smart-cover-letter').collection('users')
+}
 
-export { collection, client }
+module.exports = { connectMongo, client }
